@@ -1,6 +1,6 @@
-/** @file module.c
+/** @file ltr329als01.c
  *
- * @brief A description of the module’s purpose. 
+ * @brief driver for ltr329als01 light sensor. 
  *
  * @par
  * COPYRIGHT NOTICE: (c) 2018 Electronut Labs.
@@ -225,7 +225,7 @@ static int ltr329als01_channel_get(struct device *dev, enum sensor_channel chan,
 		float als_val = ltr_data->lux_val;
 		val->val1 = (s32_t)als_val;
 		val->val2 = ((s32_t)(als_val * 1000000)) % 1000000;
-		//LOG_DBG("val1=%d, val2=%d", val->val1, val->val2);
+		LOG_DBG("val1=%d, val2=%d", val->val1, val->val2);
 		return 0;
 
 	} else {
@@ -258,6 +258,8 @@ static int ltr329als01_init(struct device *dev)
 	} else {
 		return -EIO;
 	}
+
+	LOG_DBG("ltr_init is ok");
 
 	// set measurement and intergration time
 	uint8_t mea_int_time = 0x1b;
