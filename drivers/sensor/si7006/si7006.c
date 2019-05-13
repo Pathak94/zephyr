@@ -90,7 +90,6 @@ float si7006_get_temperature(struct device *i2c_dev)
 		((175.72 * (float)temperature_code) / (float)65536) - 46.85;
 
 	// LOG_DBG("temp= %d", (s32_t)temperature);
-	printf("temp: %f\r\n", temperature);
 
 	return temperature;
 }
